@@ -1,8 +1,22 @@
---- #YAML:1.0
+---
 name: Business-DK-CVR
-version: 0.02
+version: 0.03
 author:
-  - Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>
+  - 'Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>'
 abstract: a danish CVR (VAT Registration) code generator/validator
 license: artistic
-generated_by: Module::Build version 0.2611, without YAML.pm
+resources:
+  license: http://opensource.org/licenses/artistic-license.php
+requires:
+  Business::DK::PO: 0.02
+  Carp: 0
+  Exporter: 0
+  Test::Exception: 0
+provides:
+  Business::DK::CVR:
+    file: lib/Business/DK/CVR.pm
+    version: 0.03
+generated_by: Module::Build version 0.2806
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
