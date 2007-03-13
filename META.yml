@@ -1,6 +1,6 @@
 ---
 name: Business-DK-CVR
-version: 0.03
+version: 0.04
 author:
   - 'Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>'
 abstract: a danish CVR (VAT Registration) code generator/validator
@@ -15,7 +15,7 @@ requires:
 provides:
   Business::DK::CVR:
     file: lib/Business/DK/CVR.pm
-    version: 0.03
+    version: 0.04
 generated_by: Module::Build version 0.2806
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
