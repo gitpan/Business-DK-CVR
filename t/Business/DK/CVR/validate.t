@@ -1,4 +1,4 @@
-# $Id: validate.t,v 1.1 2006-02-20 21:37:04 jonasbn Exp $
+# $Id: validate.t,v 1.1 2008-06-11 08:08:00 jonasbn Exp $
 
 use strict;
 use Test::More tests => 8;
