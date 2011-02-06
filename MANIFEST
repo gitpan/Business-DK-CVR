@@ -1,5 +1,6 @@
 Build.PL
 Changes
+examples/params-validate.pl
 INSTALL
 lib/Business/DK/CVR.pm
 lib/Class/Business/DK/CVR.pm
@@ -13,6 +14,7 @@ README
 t/00.load.t
 t/Business/DK/CVR/generate.t
 t/Business/DK/CVR/validate.t
+t/Business/DK/CVR/validateCVR.t
 t/Class/Business/DK/CVR/get_number.t
 t/Class/Business/DK/CVR/new.t
 t/Class/Business/DK/CVR/number.t

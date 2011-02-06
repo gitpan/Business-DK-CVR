@@ -6,49 +6,46 @@ use strict;
 use warnings;
 use vars qw($VERSION @EXPORT_OK);
 use Carp qw(croak);
-use Business::DK::PO qw(_argument _content);
+use Params::Validate qw(validate_pos SCALAR OBJECT ARRAYREF );
+use Readonly;
 
 use base qw(Exporter);
 
-$VERSION   = '0.05';
-@EXPORT_OK = qw(validate generate _length _calculate_sum);
+$VERSION   = '0.06';
+@EXPORT_OK = qw(validate validateCVR generate _calculate_sum);
 
 use constant MODULUS_OPERAND => 11;
 use constant MAX_CVRS        => 9090908;
+use constant VALID           => 1;
+use constant INVALID         => 0;
 
-my @controlcifers = qw(2 7 6 5 4 3 2 1);
+Readonly my @controlcifers => qw(2 7 6 5 4 3 2 1);
+
+sub validateCVR {
+    return validate(shift);
+}
 
 sub validate {
-    my $controlnumber = shift;
+    my ($controlnumber) = @_;
 
-    my $controlcode_length = scalar @controlcifers;
-
-    if ( !$controlnumber ) {
-        _argument($controlcode_length);
-    }
-    _content($controlnumber);
-    _length( $controlnumber, $controlcode_length );
+    validate_pos( @_, { type => SCALAR, regex => qr/^\d{8}$/ } );
 
     my $sum = _calculate_sum( $controlnumber, \@controlcifers );
 
     if ( $sum % MODULUS_OPERAND ) {
-        return 0;
+        return INVALID;
     } else {
-        return 1;
+        return VALID;
     }
-}
-
-sub _length {
-    my ( $number, $length ) = @_;
-
-    if ( length($number) != $length ) {
-        croak "argument: $number has to be $length digits long";
-    }
-    return 1;
 }
 
 sub _calculate_sum {
     my ( $number, $controlcifers ) = @_;
+
+    validate_pos( @_,
+        { type => SCALAR, regex => qr/^\d+$/ },
+        { type => ARRAYREF },
+    );
 
     my $sum = 0;
     my @numbers = split //smx, $number;
@@ -60,17 +57,15 @@ sub _calculate_sum {
 }
 
 sub generate {
-    my ( $self, $amount, $seed ) = @_;
+    my @array = validate_pos( @_,
+        { type => OBJECT | SCALAR, optional => 1 },
+        { type => SCALAR, optional => 1, default => 1 },
+        { type => SCALAR, optional => 1, default => 1 },
+    );
 
-    if ( not $amount ) {
-        $amount = 1;
-    }
+    my ( $self, $amount, $seed ) = @array;
 
-    if ( not $seed ) {
-        $seed = 1;
-    }
-
-    if ( ( !ref $self ) and ( $self ne 'Business::DK::CVR' ) ) {
+    if ( defined $self and $self =~ m/\d+/ ) {
         $seed   = $amount;
         $amount = $self;
     }
@@ -116,7 +111,7 @@ Business::DK::CVR - Danish CVR (VAT Registration) code generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.05 of Business::DK::CVR
+This documentation describes version 0.06 of Business::DK::CVR
 
 =head1 SYNOPSIS
 
@@ -135,6 +130,37 @@ This documentation describes version 0.05 of Business::DK::CVR
         print "Code is not valid";
     }
 
+    #Using with Params::Validate
+    #See also examples/
+    
+    use Params::Validate qw(:all);
+    use Business::DK::CVR qw(validateCVR);
+    
+    eval {
+        check_cvr(cvr => 27355021);
+    };
+    
+    if ($@) {
+        print "CVR is not valid - $@\n";
+    }
+    
+    eval {
+        check_cvr(cvr => 27355020);
+    };
+    
+    if ($@) {
+        print "CVR is not valid - $@\n";
+    }
+    
+    sub check_cvr {
+        validate( @_,
+        { cvr =>
+            { callbacks =>
+                { 'validate_cvr' => sub { validateCVR($_[0]); } } } } );
+        
+        print $_[1]." is a valid CVR\n";
+    
+    }
 
 =head1 DESCRIPTION
 
@@ -153,25 +179,15 @@ The function takes a single argument, a 10 digit CVR number.
 The function returns 1 (true) in case of a valid CVR number argument and  0 
 (false) in case of an invalid CVR number argument.
 
-The validation function goes through the following steps.
-
-Validation of the argument is done using the functions (all described below in detail):
-
-=over
-
-=item L<Business::DK::PO/_argument>, exported by L<Business::DK::PO>
-
-=item L<Business::DK::PO/_content>, exported by L<Business::DK::PO>
-
-=item L</_length>
-
-=back
-
 If the argument is a valid argument the sum is calculated by B<_calculate_sum>
 based on the argument and the controlcifers array.
 
 The sum returned is checked using a modulus caluculation and based on its
 validity either 1 or 0 is returned.
+
+=head2 validateCVR
+
+Better name for export. This is just a wrapper for L</validate>
 
 =head2 generate
 
@@ -180,21 +196,6 @@ an authority, since CVRs are generated and distributed by danish tax
 authorities, but it can be used to generate example CVRs for testing and so on.
 
 =head1 PRIVATE FUNCTIONS
-
-=head2 _length
-
-This function validates the length of the argument, it dies if the argument
-does not fit wihtin the boundaries specified by the arguments provided:
-
-The B<_length> function takes the following arguments:
-
-=over
-
-=item number (mandatory), the number to be validated
-
-=item length required of number (mandatory)
-
-=back
 
 =head2 _calculate_sum
 
@@ -211,8 +212,6 @@ Business::DK::CVR exports on request:
 
 =item L</generate>
 
-=item L</_length>
-
 =item L</_calculate_sum>
 
 =back
@@ -227,11 +226,6 @@ The number of valid CVRs are limited, so if the user requests a number of CVRs
 to be generated which exceeds the upper limit, this error is instantiated.
 See: L</generate>.
 
-=item * argument: $number has to be $length digits long
-
-If the number in $number does not match the specified length, this error
-is issued. See: L</_length>.
-
 =back
 
 =head1 CONFIGURATION AND ENVIRONMENT
@@ -242,7 +236,21 @@ The module requires no special configuration or environment to run.
 
 =over
 
-=item L<Business::DK::PO>
+=item * L<Params::Validate>
+
+=item * L<Exporter>
+
+=item * L<Carp>
+
+=item * L<Scalar::Util>
+
+=item * L<Class::InsideOut>
+
+=item * L<English>
+
+=item * L<Params::Validate>
+
+=item * L<Readonly>
 
 =back
 
@@ -300,7 +308,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CVR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2008
+Business-DK-CVR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2011
 
 =head1 LICENSE
 
