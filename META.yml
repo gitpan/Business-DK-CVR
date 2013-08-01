@@ -12,8 +12,9 @@ build_requires:
   Test::Prereq::Build: 0
   Test::Taint: 0
 configure_requires:
-  Module::Build: 0.36
-generated_by: 'Module::Build version 0.3607'
+  Module::Build: 0.40
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4005, CPAN::Meta::Converter version 2.131560'
 license: artistic
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -22,7 +23,7 @@ name: Business-DK-CVR
 provides:
   Business::DK::CVR:
     file: lib/Business/DK/CVR.pm
-    version: 0.06
+    version: 0.07
   Class::Business::DK::CVR:
     file: lib/Class/Business/DK/CVR.pm
     version: 0.01
@@ -42,4 +43,4 @@ resources:
   homepage: http://logicLAB.jira.com/browse/BDKCVR
   license: http://www.perlfoundation.org/artistic_license_1_0
   repository: http://logicLAB.jira.com/svn/BDKCVR
-version: 0.06
+version: 0.07
