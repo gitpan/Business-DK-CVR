@@ -1,6 +1,6 @@
 package Class::Business::DK::CVR;
 
-# $Id: CVR.pm 6792 2009-11-06 08:13:29Z jonasbn $
+# $Id$
 
 use strict;
 use warnings;
@@ -10,7 +10,7 @@ use English qw(-no_match_vars);
 
 use Business::DK::CVR qw(validate);
 
-our $VERSION = '0.01';
+our $VERSION = '0.08';
 
 private number => my %number;    # read-only accessor: number()
 

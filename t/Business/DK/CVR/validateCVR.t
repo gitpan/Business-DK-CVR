@@ -1,4 +1,4 @@
-# $Id: validateCVR.t 7355 2010-11-21 20:28:04Z jonasbn $
+# $Id$
 
 use strict;
 use Test::More tests => 8;

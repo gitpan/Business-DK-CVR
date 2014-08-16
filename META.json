@@ -4,7 +4,7 @@
       "Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4005, CPAN::Meta::Converter version 2.131560",
+   "generated_by" : "Module::Build version 0.4205",
    "license" : [
       "artistic_1"
    ],
@@ -28,7 +28,7 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.40"
+            "Module::Build" : "0.42"
          }
       },
       "runtime" : {
@@ -46,15 +46,15 @@
    "provides" : {
       "Business::DK::CVR" : {
          "file" : "lib/Business/DK/CVR.pm",
-         "version" : "0.07"
+         "version" : "0.08"
       },
       "Class::Business::DK::CVR" : {
          "file" : "lib/Class/Business/DK/CVR.pm",
-         "version" : "0.01"
+         "version" : "0.08"
       },
       "Data::FormValidator::Constraints::Business::DK::CVR" : {
          "file" : "lib/Data/FormValidator/Constraints/Business/DK/CVR.pm",
-         "version" : "0.01"
+         "version" : "0.08"
       }
    },
    "release_status" : "stable",
@@ -67,8 +67,11 @@
          "http://www.perlfoundation.org/artistic_license_1_0"
       ],
       "repository" : {
-         "url" : "http://logicLAB.jira.com/svn/BDKCVR"
-      }
+         "url" : "https://github.com/jonasbn/bdkcvr"
+      },
+      "x_projectChangelog" : "http://logiclab.jira.com/browse/BDKCVR#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel",
+      "x_projectSite" : "http://logicLAB.jira.com/browse/BDKCVR",
+      "x_projectWiki" : "http://logiclab.jira.com/wiki/display/BDKCVR/Home"
    },
-   "version" : "0.07"
+   "version" : "0.08"
 }
