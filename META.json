@@ -39,22 +39,23 @@
             "Exporter" : "0",
             "Params::Validate" : "0",
             "Readonly" : "0",
-            "Scalar::Util" : "0"
+            "Scalar::Util" : "0",
+            "perl" : "5.008"
          }
       }
    },
    "provides" : {
       "Business::DK::CVR" : {
          "file" : "lib/Business/DK/CVR.pm",
-         "version" : "0.08"
+         "version" : "0.09"
       },
       "Class::Business::DK::CVR" : {
          "file" : "lib/Class/Business/DK/CVR.pm",
-         "version" : "0.08"
+         "version" : "0.09"
       },
       "Data::FormValidator::Constraints::Business::DK::CVR" : {
          "file" : "lib/Data/FormValidator/Constraints/Business/DK/CVR.pm",
-         "version" : "0.08"
+         "version" : "0.09"
       }
    },
    "release_status" : "stable",
@@ -73,5 +74,5 @@
       "x_projectSite" : "http://logicLAB.jira.com/browse/BDKCVR",
       "x_projectWiki" : "http://logiclab.jira.com/wiki/display/BDKCVR/Home"
    },
-   "version" : "0.08"
+   "version" : "0.09"
 }

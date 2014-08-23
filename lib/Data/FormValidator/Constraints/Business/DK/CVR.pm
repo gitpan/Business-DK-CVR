@@ -1,7 +1,5 @@
 package Data::FormValidator::Constraints::Business::DK::CVR;
 
-# $Id: CVR.pm,v 1.1 2008-06-11 08:08:00 jonasbn Exp $
-
 use strict;
 use warnings;
 use vars qw(@ISA $VERSION @EXPORT_OK);
@@ -16,7 +14,7 @@ use base 'Exporter';
 use constant VALID   => 1;
 use constant INVALID => undef;
 
-$VERSION = '0.08';
+$VERSION = '0.09';
 
 sub valid_cvr {
     return sub {
@@ -67,7 +65,7 @@ Data::FormValidator::Constraints::Business::DK::CVR - constraint for Danish CVR
 
 =head1 VERSION
 
-The documentation describes version 0.01 of Data::FormValidator::Constraints::Business::DK::CVR
+The documentation describes version 0.09 of Data::FormValidator::Constraints::Business::DK::CVR
 
 =head1 SYNOPSIS
 
@@ -194,7 +192,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CVR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2008
+Business-DK-CVR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2014
 
 =head1 LICENSE
 

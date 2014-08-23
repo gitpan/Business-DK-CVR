@@ -23,13 +23,13 @@ name: Business-DK-CVR
 provides:
   Business::DK::CVR:
     file: lib/Business/DK/CVR.pm
-    version: '0.08'
+    version: '0.09'
   Class::Business::DK::CVR:
     file: lib/Class/Business/DK/CVR.pm
-    version: '0.08'
+    version: '0.09'
   Data::FormValidator::Constraints::Business::DK::CVR:
     file: lib/Data/FormValidator/Constraints/Business/DK/CVR.pm
-    version: '0.08'
+    version: '0.09'
 requires:
   Carp: '0'
   Class::InsideOut: '0'
@@ -38,6 +38,7 @@ requires:
   Params::Validate: '0'
   Readonly: '0'
   Scalar::Util: '0'
+  perl: '5.008'
 resources:
   bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-DK-CVR
   homepage: http://logicLAB.jira.com/browse/BDKCVR
@@ -46,4 +47,4 @@ resources:
   projectSite: http://logicLAB.jira.com/browse/BDKCVR
   projectWiki: http://logiclab.jira.com/wiki/display/BDKCVR/Home
   repository: https://github.com/jonasbn/bdkcvr
-version: '0.08'
+version: '0.09'

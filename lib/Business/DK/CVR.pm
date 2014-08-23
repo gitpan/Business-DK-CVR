@@ -1,17 +1,16 @@
 package Business::DK::CVR;
 
-# $Id: CVR.pm,v 1.7 2008-06-11 08:08:00 jonasbn Exp $
-
 use strict;
 use warnings;
 use vars qw($VERSION @EXPORT_OK);
 use Carp qw(croak);
 use Params::Validate qw(validate_pos SCALAR OBJECT ARRAYREF );
 use Readonly;
+use 5.008; #5.8.0
 
 use base qw(Exporter);
 
-$VERSION   = '0.08';
+$VERSION   = '0.09';
 @EXPORT_OK = qw(validate validateCVR generate _calculate_sum);
 
 use constant MODULUS_OPERAND => 11;
@@ -111,7 +110,7 @@ Business::DK::CVR - Danish CVR (VAT Registration) code generator/validator
 
 =head1 VERSION
 
-This documentation describes version 0.06 of Business::DK::CVR
+This documentation describes version 0.09 of Business::DK::CVR
 
 =head1 SYNOPSIS
 
@@ -308,7 +307,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CVR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2011
+Business-DK-CVR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2014
 
 =head1 LICENSE
 

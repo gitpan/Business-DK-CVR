@@ -1,7 +1,5 @@
 package Class::Business::DK::CVR;
 
-# $Id$
-
 use strict;
 use warnings;
 use Class::InsideOut qw( private register id );
@@ -10,7 +8,7 @@ use English qw(-no_match_vars);
 
 use Business::DK::CVR qw(validate);
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 private number => my %number;    # read-only accessor: number()
 
@@ -69,7 +67,7 @@ Class::Business::DK::CVR - Danish CVR number class
 
 =head1 VERSION
 
-The documentation describes version 0.01 of Class::Business::DK::CVR
+The documentation describes version 0.09 of Class::Business::DK::CVR
 
 =head1 SYNOPSIS
 
@@ -181,7 +179,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Business-DK-CVR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2009
+Business-DK-CVR and related is (C) by Jonas B. Nielsen, (jonasbn) 2006-2014
 
 =head1 LICENSE
 

@@ -3,7 +3,7 @@ NAME
     generator/validator
 
 VERSION
-    This documentation describes version 0.06 of Business::DK::CVR
+    This documentation describes version 0.09 of Business::DK::CVR
 
 SYNOPSIS
         use Business::DK::CVR qw(validate);
@@ -155,7 +155,7 @@ AUTHOR
     Jonas B. Nielsen, (jonasbn) - "<jonasbn@cpan.org>"
 
 COPYRIGHT
-    Business-DK-CVR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2011
+    Business-DK-CVR is (C) by Jonas B. Nielsen, (jonasbn) 2006-2014
 
 LICENSE
     Business-DK-CVR is released under the artistic license
